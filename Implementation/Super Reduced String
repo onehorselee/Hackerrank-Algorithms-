@@ -9,7 +9,7 @@ repeat{
   if(letters[i] == letters[i+1]) {
     letters = letters[-c(i,i+1)]
     
-    # check the mirrow duplicates
+    # check the mirror duplicates
     while(i>1 && i<=length(letters)){
       if( letters[i-1] == letters[i]) 
         letters = letters[-c(i-1,i)] 
