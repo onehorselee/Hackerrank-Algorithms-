@@ -5,9 +5,15 @@ letters.unique <- unique(letters.all)
 
 
 # if string has n unique letters, take out n-2 letters for experiment
+# the total number of all combinations
+# store all the combinations in a dataframe
 n <- length(letters.unique)
-n.comb <- choose(n,n-2) # the total number of all combinations
-combine.index <-combn(n,n-2) # store all the combinations in a dataframe
+
+if(n < 2 | min(letters.unique) == max(letters.unique)) {
+    cat(0)}
+else{
+    n.comb <- choose(n,n-2) 
+combine.index <-combn(n,n-2) 
 
 
 remove <- character()
@@ -35,3 +41,4 @@ for(i in 1:n.comb){
 
 
 cat(max(alternating.length))
+}
