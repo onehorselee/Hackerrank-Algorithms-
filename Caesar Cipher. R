@@ -1,0 +1,30 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+data <- scan("/dev/stdin", what = list(" ", " ", " "))
+s <- data[[2]]
+k <- as.numeric(data[[3]]) %% 26
+letters <- unlist(strsplit(s,""))
+
+asc <- function(x) { strtoi(charToRaw(x),16L) } # char to number
+char <- function(n) { rawToChar(as.raw(n)) } # number to char
+
+i <- 1
+while(i <= length(letters)){
+  
+  if(!length(grep("[a-zA-Z]",letters[i])==1)) i<-i+1
+  else{
+    
+    if(asc(letters[i]) <= asc("z") && (asc(letters[i])+k) > asc("z")) {
+      letters[i] = char(asc(letters[i])+k-asc("z")+asc("a")-1)
+    } else if(asc(letters[i]) <= asc("Z") && (asc(letters[i])+k) > asc("Z")){
+      letters[i] = char(asc(letters[i])+k-asc("Z")+asc("A")-1)
+    } else{ 
+      letters[i] = char(asc(letters[i])+k)
+    }
+    
+    i <- i+1
+  }
+  
+  
+}
+
+cat(paste(letters,collapse = ""))
