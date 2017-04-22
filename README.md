@@ -1,4 +1,4 @@
 # Hackerrank-Algorithms-
-Hackerrank Algorithms practices in R
+Hackerrank-Algorithms Solutions with R
 
 link: https://www.hackerrank.com/domains/algorithms/warmup
