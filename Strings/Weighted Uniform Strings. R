@@ -1,0 +1,40 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+input <- readLines("stdin", warn = F)
+s <- input[1]
+n <- input[2]
+query <- input[c(3:length(input))]
+
+# letters and weights
+chrToN <- function(x){
+  df <- data.frame("letters" = c(letters), "weights" = c(1:26))
+  return(df$weights[which(df$letters == x)])
+}
+
+# all the possibitlies
+cal <- function(x, f){
+  out <- integer()
+  for(i in 1:f){
+    out <- append(out, chrToN(x) * i)
+  }
+  out
+}
+
+# count the frequency of each char of the s.
+s1 <- unlist(strsplit(s, "(?<=(.))(?!\\1)", perl=TRUE))
+df = data.frame(s1 = gsub('([[:alpha:]])\\1+', '\\1', s1), Freq = nchar(s1))
+df = df[order(df$s1,-df$Freq),]
+df = df[!duplicated(df$s1),]
+df$s1 <- factor(df$s1,levels = c(letters))
+
+
+# calculate all the possibilties
+out <- integer()
+for(i in 1: nrow(df)){
+  out <- append(out, cal(df$s1[i],df$Freq[i]))
+}
+
+# final check
+for( i in 1:length(query)){    
+    if(query[i] %in% out) cat("Yes","\n") else cat("No","\n")
+}
+   
