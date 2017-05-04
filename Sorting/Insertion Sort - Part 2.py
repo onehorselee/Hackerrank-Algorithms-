@@ -8,7 +8,7 @@ while(i < n):
         if(arr[j]>arr[i] and j>0):
             j=j-1
             continue 
-        elif(arr[j]> arr[i] and j == 0): # when the pointer is the first element
+        elif(arr[j]> arr[i] and j == 0): # when the pointer goes to the first element
             temp = arr[j]
             arr[j] = arr[i]
             del arr[i]
