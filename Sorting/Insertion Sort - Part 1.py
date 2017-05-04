@@ -19,10 +19,5 @@ while(i>=0):
             i = i-1  
     elif(arr[i]<e):
         arr[i+1] = e
-        print(*arr)
-        
-        if(i==0):
-            arr[0]=e
-            break
-        
+        print(*arr)  
         break
