@@ -10,9 +10,19 @@ while(i>=0):
         break
     elif(arr[i]>e):
         arr[i+1] = arr[i]
-        i = i-1
         print(*arr)
+        if(i==0):
+            arr[i]=e
+            print(*arr)
+            break
+        else:
+            i = i-1  
     elif(arr[i]<e):
         arr[i+1] = e
         print(*arr)
+        
+        if(i==0):
+            arr[0]=e
+            break
+        
         break
